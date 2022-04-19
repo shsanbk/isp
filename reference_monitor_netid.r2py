@@ -17,7 +17,6 @@ TARGET="target"
 FUNC="func"
 OBJC="objc"
 
-mycontext['lock']= createlock()
 class ABFile():
   def __init__(self,filename,create):
     # globals
@@ -34,9 +33,13 @@ class ABFile():
 
 
   def writeat(self,data,offset):
-    
+    if offset > len(self.Bfile.readat(None,0)):
+      pass
+    elif offset < 0:
+      pass
+    else: 
     # Write the requested data to the B file using the sandbox's writeat call
-    self.Bfile.writeat(data,offset)
+      self.Bfile.writeat(data,offset)
   
   def readat(self,bytes,offset):
     # Read from the A file using the sandbox's readat...
@@ -66,4 +69,3 @@ CHILD_CONTEXT_DEF["ABopenfile"] = {TYPE:OBJC,ARGS:(str,bool),EXCP:Exception,RETU
 
 # Execute the user code
 secure_dispatch_module()
-
