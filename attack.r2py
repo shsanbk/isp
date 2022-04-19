@@ -8,7 +8,7 @@ myfile=ABopenfile("testfile.txt",True)  #Create an AB file
 assert('SE' == myfile.readat(None,0))
 
 # put some valid data in the file.
-myfile.writeat("Stest12345E",0)
+myfile.writeat("Stest12345E",20)
 
 # I should still get 'SE' because the file wasn't closed.
 assert('SE' == myfile.readat(None,0))
