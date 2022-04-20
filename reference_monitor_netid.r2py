@@ -40,8 +40,7 @@ class ABFile():
         self.Bfile = openfile(self.Bfn,create)
         self.Afile.writeat('SE', 0)
     else:
-      log(self.Afn)
-      log(self.Bfn)
+      pass
 
   def writeat(self,data,offset):
     if offset > len(self.Bfile.readat(None,0)):
