@@ -27,8 +27,6 @@ class ABFile():
     self.Afn = filename+'.a'
     self.Bfn = filename+'.b'
 
-    mycontext['mylock'].acquire(true)
-
     # make the files and add 'SE' to the readat file...
     if create:
       self.Afile = openfile(self.Afn,create)
@@ -51,7 +49,6 @@ class ABFile():
   def close(self):
     self.Afile.close()
     self.Bfile.close()
-    mycontext['mylock'].release()
 
 def ABopenfile(filename, create):
   return ABFile(filename,create)
