@@ -52,8 +52,6 @@ class ABFile():
       # removefile(self.Afn)
       self.Afile.writeat(self.Bfile.readat(None,0),0)
     #if filename.b is not valie, no changes are made. 
-    else:
-      pass
     self.Afile.close()
     self.Bfile.close()
 
