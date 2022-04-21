@@ -50,7 +50,7 @@ class ABFile():
     if (self.Afile.startswith('S') and self.Afile.endswith('E')) and (self.Bfile.startwith('S') and self.Bfile.endswith('E')):
       #files are valid, original file's data is replaced with the data from filename.b
       # removefile(self.Afn)
-      self.Afile.writeat(self.Bfile(readat(None,0),0))
+      self.Afile.writeat(self.Bfile.readat(None,0),0)
     #if filename.b is not valie, no changes are made. 
     else:
       pass
