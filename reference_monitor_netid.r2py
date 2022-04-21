@@ -53,33 +53,36 @@ class ABFile():
   def readat(self,bytes,offset):
     # Read from the A file using the sandbox's readat...
     return self.Afile.readat(bytes,offset)
-
-  def close(self):
-    #backupAfile = self.Afile.readat(None,0)
-    #writetoBfile = self.Bfile.readat(None,0)
-    #isValidAfile = True
-    #isValidBfile = True
-    #check if files are valid: 
-    #if backupAfile.startswith('S') and backupAfile.endswith('E'):
-     # isValidAfile = True
-    #else:
-     # isValidAfile = False
     
-    #if writetoBfile.startswith('S') and writetoBfile.endswith('E'):
-     # isValidBfile = True
-    #else: 
-     # isValidBfile = False
+  def close(self):
+    backupAfile = self.Afile.readat(None,0)
+    writeBfile = self.Bfile.readat(None,0)
+    isValidAfile = True
+    isValidBfile = True
+    #check if files are valid: 
+    if backupAfile.startswith('S') and backupAfile.endswith('E'):
+     isValidAfile = True
+    else:
+     isValidAfile = False
+    
+    if writeBfile.startswith('S') and writeBfile.endswith('E'):
+     isValidBfile = True
+    else: 
+     isValidBfile = False
 
     #files are valid, original file's data is replaced with the data from filename.b
-    #if isValidAfile and isValidBfile:
-     # pass
-      
-    self.Afile.close()
-    self.Bfile.close()
-      #removefile(self.Afn)
-      #newAfile = openfile(backupAfile, True)
-      #newAfile.writeat(self.Bfile.readat(None, 0),0)
-      #removefile(self.Bfn)
+    if isValidAfile and isValidBfile:
+      self.Afile.close()
+      self.Bfile.close()
+      removefile(self.Afn)
+      openfile(self.Afn, True).writeat(writeBfile,0)
+    elif isValidBfile != True: 
+      self.Afile.close()
+      self.Bfile.close()
+      removefile(self.Afn)
+      openfile(self.Afn, True).writeat(backupAfile,0)
+    else: 
+      pass
     
     
 
