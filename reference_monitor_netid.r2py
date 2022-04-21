@@ -85,16 +85,10 @@ class ABFile():
       openfile(self.Afn, True).writeat(backupAfile,0)
     else: 
       pass
-      
-    mycontext['mylock'].release()
     
     
-
-
 def ABopenfile(filename, create):
   return ABFile(filename,create)
-
-
 
 
 # The code here sets up type checking and variable hiding for you.  You
