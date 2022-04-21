@@ -17,6 +17,8 @@ TARGET="target"
 FUNC="func"
 OBJC="objc"
 
+mycontext['mylock'] = createlock()
+
 class ABFile():
   def __init__(self,filename,create):
     # globals
@@ -24,7 +26,9 @@ class ABFile():
     # local (per object) reference to the underlying file
     self.Afn = filename+'.a'
     self.Bfn = filename+'.b'
-
+    
+    mycontext['mylock'].acquire(true)
+    
     # make the files and add 'SE' to the readat file...
     if create:
       if self.Afn in listfiles():
@@ -83,6 +87,8 @@ class ABFile():
       openfile(self.Afn, True).writeat(backupAfile,0)
     else: 
       pass
+      
+    mycontext['mylock'].release()
     
     
 
