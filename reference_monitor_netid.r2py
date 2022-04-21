@@ -27,8 +27,6 @@ class ABFile():
     self.Afn = filename+'.a'
     self.Bfn = filename+'.b'
     
-    mycontext['mylock'].acquire(True)
-    
     # make the files and add 'SE' to the readat file...
     if create:
       if self.Afn in listfiles():
