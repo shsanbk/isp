@@ -70,9 +70,8 @@ class ABFile():
       self.Afile = openfile(self.Afn,True)
       self.Afile.writeat(self.Bfile.readat(None, 0),0)
       print('3'+self.Afile.readat(None,0))
-      
-    self.Afile.close()
-    self.Bfile.close()
+      self.Afile.close()
+      self.Bfile.close()
 
 
 def ABopenfile(filename, create):
