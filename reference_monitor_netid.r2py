@@ -17,8 +17,6 @@ TARGET="target"
 FUNC="func"
 OBJC="objc"
 
-mycontext['mylock'] = createlock()
-
 class ABFile():
   def __init__(self,filename,create):
     # globals
