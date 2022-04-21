@@ -65,9 +65,6 @@ class ABFile():
     if isValidAfile and isValidBfile:
       print('1'+self.Afile.readat(None, 0))
       print('2'+self.Bfile.readat(None, 0))
-      removefile(self.Afile)
-      print('2a'+self.Afile.readat(None,0))
-      self.Afile = openfile(self.Afn,True)
       self.Afile.writeat(self.Bfile.readat(None, 0),0)
       print('3'+self.Afile.readat(None,0))
       self.Afile.close()
