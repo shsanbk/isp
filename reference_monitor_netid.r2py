@@ -56,6 +56,14 @@ class ABFile():
     return self.Afile.readat(bytes,offset)
 
   def close(self):
+    if self.Afile.startswith("S") and self.Afile.endswith("E"):
+      if self.Bfile.startswith("S") and self.Bfile.endswith("E"):
+        removefile(self.Afile)
+        self.Afile.writeat(self.Bfile.readat(None, 0),0)
+      else:
+        pass
+    else: 
+      pass
     self.Afile.close()
     self.Bfile.close()
 
