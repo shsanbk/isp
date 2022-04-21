@@ -63,12 +63,7 @@ class ABFile():
 
     #files are valid, original file's data is replaced with the data from filename.b
     if isValidAfile and isValidBfile:
-      removefile(self.Afn)
       self.Afile.writeat(self.Bfile.readat(None, 0),0)
-      self.Afile.close()
-      self.Bfile.close()
-    else:
-      pass
       self.Afile.close()
       self.Bfile.close()
 
