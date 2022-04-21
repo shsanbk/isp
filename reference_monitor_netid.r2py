@@ -48,6 +48,16 @@ class ABFile():
   def close(self):
     self.Afile.close()
     self.Bfile.close()
+    #check if files are valid: 
+    if self.Afile.startswith('S') and self.Afile.endswith('E'):
+      if self.Bfile.startwith('S') and self.Bfile.endswith('E'):
+        #files are valid, original file's data is replaced with the data from filename.b
+        removefile(self.Afile)
+        openfile(self.Afn, create).writeat(self.Bfile.readat(None,0))
+        
+        #if filename.b is not valid, no changes are made. 
+    else:
+      pass
 
 
 def ABopenfile(filename, create):
