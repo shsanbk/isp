@@ -20,7 +20,7 @@ OBJC="objc"
 class ABFile():
   def __init__(self,filename,create):
     # globals
-    mycontext['debug'] = False   
+    mycontext['debug'] = True   
     # local (per object) reference to the underlying file
     self.Afn = filename+'.a'
     self.Bfn = filename+'.b'
@@ -63,10 +63,14 @@ class ABFile():
 
     #files are valid, original file's data is replaced with the data from filename.b
     if isValidAfile and isValidBfile:
-      self.Afile.writeat(self.Bfile.readat(None, 0),0)
+      self.Afile.close()
+      self.Bfile.close()
+      removefile(self.Afn)
+      newAfile = openfile(backupAfile, True)
+      newAfile.writeat(self.Bfile.readat(None, 0),0)
+      removefile(self.Bfn)
     
-    self.Afile.close()
-    self.Bfile.close()
+    
 
 
 def ABopenfile(filename, create):
